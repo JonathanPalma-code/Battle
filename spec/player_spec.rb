@@ -1,12 +1,34 @@
 require 'player'
 
 describe Player do
-  subject(:player) { described_class.new('Jonathan') }
+  subject(:jonathan) { described_class.new('Jonathan') }
+  subject(:williams) { described_class.new('Williams') }
   let(:name) { double(:name) }
+  let(:hp) { Player::HP}
 
   describe '#name' do
     it 'should return the name of the player' do
-      expect(player.name).to eq 'Jonathan'
+      expect(jonathan.name).to eq 'Jonathan'
     end
   end
+  
+  describe '#HP' do
+    it 'should return the hp of the player' do
+      expect(williams.hp).to eq hp
+    end
+  end
+
+  describe '#attack' do
+    it 'should reduce the player s HP by 10' do
+      expect(williams).to receive(:receive_damage)
+      jonathan.attack(williams)
+    end
+  end
+
+  describe '#receive_attack' do
+    it 'should receive an attack' do
+      expect{ jonathan.receive_damage }.to change{ jonathan.hp }.by(-10)
+    end
+  end
+
 end
