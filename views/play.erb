@@ -1,6 +1,9 @@
 <%= @game.player1.name %> VS <%= @game.player2.name%>
 <br>
+
+<%= @game.player1.name%>: <%= @game.player1.hp%> HP
 <%= @game.player2.name%>: <%= @game.player2.hp%> HP
 <form action='/attack'>
 <button value = 'attack'>Attack</button>
 </form>
+<%= @game.current_turn.name%>'s turn.
