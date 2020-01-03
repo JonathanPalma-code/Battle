@@ -16,18 +16,14 @@ feature 'Confirms an attack' do
 
   scenario 'be attacked by Player 2' do
     sign_in
-    click_on 'Attack'
-    click_on 'Ok'
+    attack
     click_on 'Attack'
     expect(page).to have_content("Jean attacked Jonathan")
   end
   
   scenario 'reduce Player 1 HP by 10' do
     sign_in
-    click_on 'Attack'
-    click_on 'Ok'
-    click_on 'Attack'
-    click_on 'Ok'
+    2.times { attack }
     expect(page).not_to have_content('Jonathan: 100 HP')
     expect(page).to have_content('Jonathan: 90 HP')
   end
